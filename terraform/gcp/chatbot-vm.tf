@@ -27,7 +27,7 @@ resource "google_compute_address" "chatbot" {
   project = var.project_id
   region  = var.gcp_region
 }
-/*
+
 resource "null_resource" "chatbot_provision" {
   depends_on = [google_compute_instance.chatbot]
 
@@ -40,9 +40,9 @@ resource "null_resource" "chatbot_provision" {
 
 
   provisioner "file" {
-    source      = "../../install_update.sh"
-    destination = "/tmp"
-  }
+  source      = "${path.module}/../../install_update.sh"
+  destination = "/tmp/install_update.sh"
+}
 
   # ✅ Run orchestrator script
   provisioner "remote-exec" {
@@ -52,4 +52,3 @@ resource "null_resource" "chatbot_provision" {
     ]
   }
 }
-*/
