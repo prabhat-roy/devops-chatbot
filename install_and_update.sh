@@ -8,7 +8,7 @@ sudo systemctl enable --now docker
 
 # Clone or update the repo
 if [ ! -d "chatbot" ]; then
-  git clone <REPO_URL> chatbot
+  git clone https://github.com/prabhat-roy/devops-chatbot.git chatbot
 else
   cd chatbot && git pull && cd ..
 fi
