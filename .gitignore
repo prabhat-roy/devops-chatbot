@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.env
+.venv/
+venv/
+
+# Node
+node_modules/
+*.log
+dist/
+build/
+
+# VSCode
+.vscode/
+
+# Docker
+*.pid
+*.sock
+ollama_data/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+
+# Ollama models (volume is persisted, not in repo)
+/root/.ollama/
+
+# Misc
+*.bak
+*.swp
