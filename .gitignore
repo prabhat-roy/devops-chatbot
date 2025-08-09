@@ -36,3 +36,26 @@ Thumbs.db
 # Misc
 *.bak
 *.swp
+
+# === Terraform ===
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfapply
+*.tfvars.json
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform/
+**/.terraform/
+.terraform.lock.hcl
+**/.terraform.lock.hcl
+
+# === Environment and secrets ===
+.env
+.envrc
+*.key
+*.pem
+secrets/
