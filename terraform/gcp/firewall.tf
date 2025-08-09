@@ -30,7 +30,7 @@ resource "google_compute_firewall" "chatbot" {
 
   allow {
     protocol = "tcp"
-    ports    = [80]
+    ports    = [8000]
   }
   source_ranges = ["0.0.0.0/0"]
   direction     = "INGRESS"
