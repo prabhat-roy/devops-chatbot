@@ -35,3 +35,16 @@ resource "google_compute_firewall" "chatbot" {
   source_ranges = ["0.0.0.0/0"]
   direction     = "INGRESS"
 }
+
+resource "google_compute_firewall" "chatbot" {
+  name    = "chatbot-access"
+  network = google_compute_network.vpc.name
+
+  allow {
+    protocol = "tcp"
+    ports    = [80]
+  }
+  source_ranges = ["0.0.0.0/0"]
+  direction     = "INGRESS"
+}
+
