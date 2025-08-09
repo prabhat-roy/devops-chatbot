@@ -40,9 +40,10 @@ resource "null_resource" "chatbot_provision" {
 
 
   provisioner "file" {
-  source      = "${path.module}/../../install_update.sh"
+  source      = "${path.module}/install_update.sh"
   destination = "/tmp/install_update.sh"
 }
+
 
   # ✅ Run orchestrator script
   provisioner "remote-exec" {
