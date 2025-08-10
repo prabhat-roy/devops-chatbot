@@ -17,9 +17,9 @@ fi
 cd chatbot
 
 # Build and start containers
-sudo docker-compose pull
-sudo docker-compose build --pull
-sudo docker-compose up -d --remove-orphans
+sudo -E docker-compose pull
+sudo -E docker-compose build --pull
+sudo -E docker-compose up -d --remove-orphans
 
 # Print status
 sudo docker-compose ps
