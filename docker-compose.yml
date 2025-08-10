@@ -3,13 +3,13 @@ version: "3.9"
 services:
   backend:
     build: ./backend
-    container_name: chatbot-backend
     restart: unless-stopped
     environment:
       - OLLAMA_URL=http://ollama:11434
+      - COMPOSE_HTTP_TIMEOUT=600
     depends_on:
       ollama:
-        condition: service_started   # Changed from service_healthy to avoid long delays
+        condition: service_healthy
     networks:
       - chatbot-net
     ports:
@@ -17,10 +17,10 @@ services:
 
   frontend:
     build: ./frontend
-    container_name: chatbot-frontend
     restart: unless-stopped
     depends_on:
-      - backend
+      backend:
+        condition: service_started
     networks:
       - chatbot-net
     ports:
@@ -28,7 +28,6 @@ services:
 
   ollama:
     build: ./ollama
-    container_name: chatbot-ollama
     restart: unless-stopped
     networks:
       - chatbot-net
@@ -40,7 +39,7 @@ services:
       test: ["CMD", "curl", "-sf", "http://localhost:11434"]
       interval: 15s
       timeout: 5s
-      retries: 20 # Allow longer for big model to load
+      retries: 40 # Allow longer for big model to load
 
 volumes:
   ollama_data:
