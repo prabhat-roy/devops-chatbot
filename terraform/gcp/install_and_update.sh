@@ -5,6 +5,7 @@ set -e
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y docker.io docker-compose
 sudo systemctl enable --now docker
+export COMPOSE_HTTP_TIMEOUT=300
 
 # Clone or update the repo
 if [ ! -d "chatbot" ]; then

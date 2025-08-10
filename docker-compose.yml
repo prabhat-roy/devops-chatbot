@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   backend:
     build: ./backend
@@ -7,11 +9,11 @@ services:
       - OLLAMA_URL=http://ollama:11434
     depends_on:
       ollama:
-        condition: service_healthy
+        condition: service_started   # Changed from service_healthy to avoid long delays
     networks:
       - chatbot-net
     ports:
-      - "8000:8000"   # Changed from expose so you can test from host
+      - "8000:8000" # Accessible from host for testing
 
   frontend:
     build: ./frontend
@@ -35,10 +37,10 @@ services:
     volumes:
       - ollama_data:/root/.ollama
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434"]
-      interval: 10s
+      test: ["CMD", "curl", "-sf", "http://localhost:11434"]
+      interval: 15s
       timeout: 5s
-      retries: 5
+      retries: 20 # Allow longer for big model to load
 
 volumes:
   ollama_data:
